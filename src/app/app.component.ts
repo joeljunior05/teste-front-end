@@ -1,10 +1,12 @@
+//Framework artifacts
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './page/app.component.html',
-  styleUrls: ['./style/app.component.css']
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title: string;
+  title: string = 'my-app';
 }

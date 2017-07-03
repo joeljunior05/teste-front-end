@@ -1,16 +1,27 @@
+//Framework artifacts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+//App artifacts
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
+//Other artifacts
+import { VideoDetailComponent } from './video-detail/video-detail.component';
+import { YouTubeService } from './youtube.service';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    VideoDetailComponent
+  ],
+  providers: [YouTubeService],
+  bootstrap: [AppComponent],
+  exports: [AppRoutingModule]
 })
+
 export class AppModule { }
