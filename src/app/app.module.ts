@@ -12,12 +12,14 @@ import { VideoDetailComponent } from './video-detail/video-detail.component';
 import { YouTubeService } from './youtube.service';
 import { HomeComponent } from './home/home.component';
 import { VideoListComponent } from './video-list/video-list.component';
+import { HttpModule } from "@angular/http";
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   declarations: [
     AppComponent,
