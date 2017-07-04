@@ -27,12 +27,16 @@ export class VideoDetailComponent implements OnInit {
   ngOnInit() {
     this.videoId = this.route.snapshot.paramMap.get('id');
 
-    this.selectedVideo = this.ytService.getVideoExample(this.videoId);
+    this.ytService.getVideoInDetailByVideoId(this.videoId,
+                            (video: Video) => this.initWithVideo(video));
+  }
 
-    //iFrame needs SafeResourceURL to work
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl("http://www.youtube.com/embed/"+this.selectedVideo.videoId); 
-
-    //TODO: Implement asynchronous service.
+  initWithVideo(video: Video){
+    if(video){
+      this.selectedVideo = video;
+      //iFrame needs SafeResourceURL to work
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl("http://www.youtube.com/embed/"+this.selectedVideo.videoId); 
+    }  
   }
 
   goBack(): void {

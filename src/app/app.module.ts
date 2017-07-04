@@ -1,6 +1,7 @@
 //Framework artifacts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 
 //App artifacts
 import { AppComponent } from './app.component';
@@ -15,7 +16,8 @@ import { VideoListComponent } from './video-list/video-list.component';
 @NgModule({
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,

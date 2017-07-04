@@ -1,3 +1,7 @@
-<p>
-  Video List Works
-</p>
+<div *ngFor="let video of videos" [routerLink]="['/video', video.videoId]" >
+    <hr>
+    <h4>{{video.title}}</h4>
+    <img src="{{video.srcCoverImg}}" alt="Capa do video">
+</div>
+
+<button *ngIf="nextPage" (click)="getMoreVideos()">Carregar Mais</button>

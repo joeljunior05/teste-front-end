@@ -1,11 +1,9 @@
 <div>
         <form id="search-film">
-          <input type="text" id="search-film-input" placeholder="Procure seu video"> 
+          <input type="text" [(ngModel)]="search_q" name="search_q" placeholder="Procure seu video"> 
         </form>
       
-        <button type="submit" id="search-film-submit" [routerLink]="['/video', title]">Pesquisar</button>
+        <button type="submit" (click)="searchVideos()">Pesquisar</button>
 </div>
 
-<app-video-list></app-video-list>
-
-<button>Carregar Mais</button>
+<app-video-list *ngIf="foundVideos" [nextPage]="nextPgToken" [videos]="foundVideos"></app-video-list>
