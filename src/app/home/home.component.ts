@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 
 import { Video } from "app/video";
 import { YouTubeService } from "app/youtube.service";
+import { VideoListComponent } from "app/video-list/video-list.component";
 
 @Component({
   selector: 'app-home',
@@ -11,21 +12,18 @@ import { YouTubeService } from "app/youtube.service";
 })
 
 export class HomeComponent implements OnInit {
-  nextPgToken: string; //NextPageTokenId
+
+  @ViewChild(VideoListComponent) list: VideoListComponent;
 
   foundVideos: Video[] = [];
   search_q: string;
 
-  constructor(private ytService: YouTubeService) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
   searchVideos(){
-    this.ytService.searchVideosByQuery(this.search_q, (videos: Video[], tokenId: string) => {
-        this.foundVideos = videos;
-        this.nextPgToken = tokenId;
-      });
-    
+    this.list.createVideos(this.search_q);
   }
 }

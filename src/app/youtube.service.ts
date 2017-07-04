@@ -26,10 +26,17 @@ export class YouTubeService {
       params.set('id', videoId);
       params.set('key', this.ACCESS_KEY);
 
+      console.log(videoId);
+
       this.http.get(SERVICE, {search: params}).toPromise().then((response: Response) => {
-        var video = this.extractData(response)[0];
-        video.videoId = videoId;
-        video.viewNumber = response.json().items[0].statistics.viewCount;
+        var element = response.json().items[0];
+        var video = this.mapElement2Video(element);
+        
+        if(element){
+          video.videoId = videoId;
+          video.viewNumber = element.statistics.viewCount;
+        }
+
         func(video);
       }).catch(this.handleError);
 
@@ -72,23 +79,44 @@ export class YouTubeService {
 
   private extractData(response: Response): Video[] {
     let body = response.json();
+
+    console.log(body);
+
     var videos: Video[] = [];
 
     body.items.forEach((element, index, array) => {
-      var video = new Video();
-      video.videoId       = element.id.videoId;
-      video.channelTitle  = element.snippet.channelTitle ;
-      video.description   = element.snippet.description;
-      video.title         = element.snippet.title;
-      video.srcCoverImg   = element.snippet.thumbnails.medium.url;
-      videos.push(video);
+      videos.push(this.mapElement2Video(element));
     });
     
     return videos;
   }
 
+  private mapElement2Video(element: any): Video{
+
+    var video = {
+      videoId: '',
+      title: '',
+      description: '',
+      channelTitle: '',
+      srcCoverImg: '',
+      srcChannelImg: '',
+      viewNumber: 0
+    };
+
+    if(element){
+
+      video.videoId       = element.id.videoId;
+      video.channelTitle  = element.snippet.channelTitle ;
+      video.description   = element.snippet.description;
+      video.title         = element.snippet.title;
+      video.srcCoverImg   = element.snippet.thumbnails.medium.url;
+    }
+
+    return video;
+  }
+
   private handleError (error: Response | any): Promise<any> {
-    let errMsg: string;
+    let errMsg: string; 
 
     if (error instanceof Response) {
       const body = error.json() || '';

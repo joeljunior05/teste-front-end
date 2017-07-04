@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { Video } from "app/video";
 import { YouTubeService } from "app/youtube.service";
 
@@ -9,12 +10,13 @@ import { YouTubeService } from "app/youtube.service";
 })
 export class VideoListComponent implements OnInit {
 
-  @Input() videos: Video[];
-  @Input() nextPage: string;
+  videos: Video[];
+  nextPage: string;
 
   constructor(private ytService: YouTubeService) { }
 
   ngOnInit() {
+    
   }
 
   getMoreVideos(){
@@ -23,5 +25,13 @@ export class VideoListComponent implements OnInit {
       this.videos = this.videos.concat(videos);
     });
   }
+
+    
+  createVideos(search_q: string) {
+      this.ytService.searchVideosByQuery(search_q, (videos: Video[], tokenId: string) => {
+        this.videos= videos;
+        this.nextPage = tokenId;
+      });
+    }
 
 }
