@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { VideoDetailComponent } from './video-detail/video-detail.component';
 import { YouTubeService } from './youtube.service';
 import { HomeComponent } from './home/home.component';
+import { VideoListComponent } from './video-list/video-list.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     VideoDetailComponent,
-    HomeComponent
+    HomeComponent,
+    VideoListComponent
   ],
   providers: [YouTubeService],
   bootstrap: [AppComponent],
