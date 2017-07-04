@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 //Other artifacts
 import { VideoDetailComponent } from './video-detail/video-detail.component';
 import { YouTubeService } from './youtube.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { YouTubeService } from './youtube.service';
   ],
   declarations: [
     AppComponent,
-    VideoDetailComponent
+    VideoDetailComponent,
+    HomeComponent
   ],
   providers: [YouTubeService],
   bootstrap: [AppComponent],
