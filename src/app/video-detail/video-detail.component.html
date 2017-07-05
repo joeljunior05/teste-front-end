@@ -1,12 +1,33 @@
-<div *ngIf="selectedVideo">
-<button (click)="goBack()">Voltar</button>
-
-<h1>{{selectedVideo.title}}</h1>
-
-<h3 >{{selectedVideo.description}}</h3>
-
-<h4 >{{selectedVideo.viewNumber}}</h4>
-
-<iframe width="853" height="480" [src]='url' frameborder="0" allowfullscreen></iframe>
-
+<div class="container">
+        <div fxLayout="row" fxLayoutAlign="start" class="content background-black">
+            <div class="blocks" fxFlex = "15%">
+                    <button class="btn-back" color="primary" md-fab (click)="goBack()"><md-icon>arrow_back</md-icon></button></div>
+            <div class="blocks" fxFlex = "70%" fxLayout="column" fxLayoutAlign="space-around center" >
+                <div *ngIf="selectedVideo" class="full-width" >
+                    <div class="video-container"><iframe width="853" height="480" [src]='url' frameborder="0" allowfullscreen></iframe></div>
+                </div>
+            </div>
+            <div class="blocks" fxFlex = "15%"></div>
+        </div>
+</div>
+<div class="container">
+        <div fxLayout="row" fxLayoutAlign="start center" class="content margin-default">
+            <div class="blocks" fxFlex = "15%"></div>
+            <div class="blocks" fxFlex = "70%" fxLayout="column" fxLayoutAlign="space-around center" >
+                    <md-card *ngIf="selectedVideo" class="full-width margin-default" fxLayout="column">
+                            <md-card-content>
+                            <md-card-title>{{selectedVideo.title}}</md-card-title>
+                            <md-card-subtitle class="right"><md-icon>person</md-icon> {{selectedVideo.channelTitle}} 
+                                <br> 
+                                <br> 
+                                <md-icon>poll</md-icon>{{selectedVideo.viewNumber}} Visualizações</md-card-subtitle>
+                            <hr>
+                            <p class="mat-body-1">
+                                {{selectedVideo.description}}
+                            </p>
+                            </md-card-content>
+                    </md-card> 
+            </div>
+            <div class="blocks" fxFlex = "15%"></div>
+        </div>
 </div>

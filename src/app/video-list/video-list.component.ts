@@ -8,10 +8,12 @@ import { YouTubeService } from "app/youtube.service";
   templateUrl: './video-list.component.html',
   styleUrls: ['./video-list.component.css']
 })
+
 export class VideoListComponent implements OnInit {
 
   videos: Video[];
   nextPage: string;
+  isLoading: boolean;
 
   constructor(private ytService: YouTubeService) { }
 
@@ -20,7 +22,9 @@ export class VideoListComponent implements OnInit {
   }
 
   getMoreVideos(){
+    this.isLoading = true;
     this.ytService.getNextPageByTokenId(this.nextPage, (videos, nextPageToken) => {
+      this.isLoading = false;
       this.nextPage = nextPageToken;
       this.videos = this.videos.concat(videos);
     });
@@ -28,7 +32,9 @@ export class VideoListComponent implements OnInit {
 
     
   createVideos(search_q: string) {
+      this.isLoading = true;
       this.ytService.searchVideosByQuery(search_q, (videos: Video[], tokenId: string) => {
+        this.isLoading = false;
         this.videos= videos;
         this.nextPage = tokenId;
       });

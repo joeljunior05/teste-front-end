@@ -18,12 +18,16 @@ export class HomeComponent implements OnInit {
   foundVideos: Video[] = [];
   search_q: string;
 
+  isAnimated: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+  
   }
 
   searchVideos(){
+    this.isAnimated = true;
     this.list.createVideos(this.search_q);
   }
 }

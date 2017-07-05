@@ -1,9 +1,20 @@
-<div>
-        <form id="search-film">
-          <input type="text" [(ngModel)]="search_q" name="search_q" placeholder="Procure seu video"> 
-        </form>
-      
-        <button type="submit" (click)="searchVideos()">Pesquisar</button>
+<div class="container">
+    <div fxLayout="row" fxLayoutAlign="start center" class="content margin-default">
+        <div class="blocks" fxFlex = "10%"></div>
+        <div class="blocks animate" fxFlex = "80%" >
+            <md-card class="form" [ngClass]="{'animate': isAnimated}" fxLayout="column" fxLayoutAlign="space-around center">
+                <form id="search-film" >
+                  <md-input-container class="margin-default" >
+                    <input mdInput type="text" [(ngModel)]="search_q" name="search_q" placeholder="Procure seu video"> 
+                  </md-input-container>
+                  <button md-raised-button color="primary" type="submit" (click)="searchVideos()"  href="#list">Pesquisar</button>
+                </form>
+            </md-card>
+        </div>
+        <div class="blocks" fxFlex = "10%"></div>
+    </div>
 </div>
 
-<app-video-list></app-video-list>
+<app-video-list id="list"></app-video-list>
+
+<div class="container margin-default"></div>

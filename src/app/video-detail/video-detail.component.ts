@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ApplicationRef } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -22,7 +22,8 @@ export class VideoDetailComponent implements OnInit {
   constructor( private ytService: YouTubeService,
     private route: ActivatedRoute,
     private location: Location,
-    private sanitizer: DomSanitizer) {}
+    private sanitizer: DomSanitizer,
+    private appRef: ApplicationRef) {}
 
   ngOnInit() {
     this.videoId = this.route.snapshot.paramMap.get('id');

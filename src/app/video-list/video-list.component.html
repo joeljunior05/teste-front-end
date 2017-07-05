@@ -1,7 +1,30 @@
-<div *ngFor="let video of videos" [routerLink]="['/video', video.videoId]" >
-    <hr>
-    <h4>{{video.title}}</h4>
-    <img src="{{video.srcCoverImg}}" alt="Capa do video">
-</div>
+<div class="container">
+    <div fxLayout="row" fxLayoutAlign="start center" class="content margin-default">
+        <div class="blocks" fxFlex = "10%"></div>
+        <div class="blocks" fxFlex = "80%" fxLayout="column" fxLayoutAlign="space-around center" >
 
-<button *ngIf="nextPage" (click)="getMoreVideos()">Carregar Mais</button>
+        <md-card  *ngIf="videos" class="full-width" fxLayout="column" fxLayoutAlign="space-around center">
+            <div fxLayout="row" *ngFor="let video of videos" class="margin-default full-width"  >
+              <div class="thumbnail">
+                  <img src="{{video.srcCoverImg}}" [routerLink]="['/video', video.videoId]">
+                </div>
+                <div fxFlex="grow">
+                  <div class="title margin-default mat-tab-link" [routerLink]="['/video', video.videoId]">
+                    <a>{{ video.title }}</a>
+                  </div>
+                  <div class="user margin-default">
+                        <md-icon>person</md-icon><span style="font-size: 12px"> {{video.channelTitle}}</span>
+                  </div>
+                  <div class="desc margin-default">
+                    {{ video.description }}
+                  </div>
+              </div>
+              
+            </div>
+            <button md-raised-button *ngIf="videos && !isLoading" (click)="getMoreVideos()" [disabled]="!nextPage">Carregar Mais</button>
+        </md-card>
+            <md-spinner md-diameter="5" *ngIf="isLoading" class="margin-default" color="accent"></md-spinner>
+        </div>
+        <div class="blocks" fxFlex = "10%"></div>
+    </div>
+</div>

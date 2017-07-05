@@ -2,24 +2,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
+import { HttpModule } from "@angular/http";
 
 //App artifacts
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AppMaterialModule } from "app/app-material.module";
 
 //Other artifacts
 import { VideoDetailComponent } from './video-detail/video-detail.component';
 import { YouTubeService } from './youtube.service';
 import { HomeComponent } from './home/home.component';
 import { VideoListComponent } from './video-list/video-list.component';
-import { HttpModule } from "@angular/http";
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppMaterialModule
   ],
   declarations: [
     AppComponent,
