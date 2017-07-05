@@ -6,7 +6,7 @@ import { YouTubeService } from "app/youtube.service";
 @Component({
   selector: 'app-video-list',
   templateUrl: './video-list.component.html',
-  styleUrls: ['./video-list.component.css']
+  styleUrls: []
 })
 
 export class VideoListComponent implements OnInit {

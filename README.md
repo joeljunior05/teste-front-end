@@ -16,4 +16,10 @@ npm install -g @angular/cli
 cd <PATH_TO_FOLDER>/teste-front-end
 npm install
 ```
+
 - Run app with **npm start**. This enable app on watch mode, then you can open the Angular App on your browser (http://localhost:4200); 
+
+- Some tests are available on the project, to run them:
+```bash
+npm test
+```

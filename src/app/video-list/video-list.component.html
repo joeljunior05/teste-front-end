@@ -9,11 +9,11 @@
                   <img src="{{video.srcCoverImg}}" [routerLink]="['/video', video.videoId]">
                 </div>
                 <div fxFlex="grow">
-                  <div class="title margin-default mat-tab-link" [routerLink]="['/video', video.videoId]">
+                  <div class="margin-default mat-tab-link" [routerLink]="['/video', video.videoId]">
                     <a>{{ video.title }}</a>
                   </div>
                   <div class="user margin-default">
-                        <md-icon>person</md-icon><span style="font-size: 12px"> {{video.channelTitle}}</span>
+                        <md-icon>person</md-icon><span > {{video.channelTitle}}</span>
                   </div>
                   <div class="desc margin-default">
                     {{ video.description }}
