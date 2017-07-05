@@ -34,6 +34,7 @@ export class VideoDetailComponent implements OnInit {
 
   initWithVideo(video: Video){
     if(video){
+      this.videoId = video.videoId;
       this.selectedVideo = video;
       //iFrame needs SafeResourceURL to work
       this.url = this.sanitizer.bypassSecurityTrustResourceUrl("http://www.youtube.com/embed/"+this.selectedVideo.videoId); 

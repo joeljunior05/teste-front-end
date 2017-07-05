@@ -15,9 +15,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild(VideoListComponent) list: VideoListComponent;
 
-  foundVideos: Video[] = [];
   search_q: string;
-
   isAnimated: boolean = false;
 
   constructor() { }
